@@ -20,7 +20,7 @@ public interface CustomerServiceRestProxy {
 	@GetMapping(path = "/customers/{theId}")
 	public Customer retriveCustomer(@PathVariable Integer theId);
 	@PostMapping(path = "/customers")
-	public ResponseEntity<Customer> createCustomer( @RequestBody Customer theCustomer);
+	public ResponseEntity<Customer> createCustomer(@RequestBody Customer theCustomer);
 	@PutMapping("/customers/{theId}")
 	public void updateCustomer(@PathVariable Integer theId,@RequestBody Customer theCustomer);
 	@DeleteMapping("/customers/{theId}")

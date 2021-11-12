@@ -1,0 +1,22 @@
+package com.simplilearn.workshop;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.fail;
+
+import org.junit.jupiter.api.Disabled;
+
+
+public class StandardTest {
+	
+	@Test
+	@Disabled
+	void failingTest() {
+		fail("this method always fails");
+	}
+	
+	@Test
+	void succedingTest() {
+		System.out.println("always pass");
+	}
+	
+}

@@ -1,0 +1,13 @@
+package com.simplilearn.workshop;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.RepetitionInfo;
+
+public class RepeatedTest {
+	
+	@org.junit.jupiter.api.RepeatedTest(5)
+	void addNumber(RepetitionInfo repetitionInfo) {
+		Assertions.assertEquals(2, Math.addExact(1, 1),"1+1 should always = 2");
+	}
+
+}

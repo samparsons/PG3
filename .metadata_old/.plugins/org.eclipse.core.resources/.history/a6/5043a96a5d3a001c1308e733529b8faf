@@ -1,0 +1,13 @@
+package com.simplilearn.workshop;
+
+import org.junit.jupiter.api.Test;
+
+
+
+public class StandardTest {
+	
+	@Test
+	void failingTest() {
+		fail("this method always fails");
+	}
+}

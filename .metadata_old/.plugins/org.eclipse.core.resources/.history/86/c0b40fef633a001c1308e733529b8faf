@@ -1,0 +1,21 @@
+package com.simplilearn.workshop;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.DisplayName;
+
+@DisplayName("Assertions")
+public class AssertionsTest {
+	
+	@Test
+	public void assertTestTrue() {
+		assertTrue(4>0);
+	}
+	
+	@Test
+	public void assertTestFalse() {
+		assertFalse(5 < 1);
+	}
+
+}

@@ -34,7 +34,7 @@ public class CustomerController {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("customer-form"); // logical name
 		Customer theCustomer = new Customer();
-		modelAndView.addObject("customers",theCustomer);
+		modelAndView.addObject("customer",theCustomer);
 		return modelAndView;
 	}
 	

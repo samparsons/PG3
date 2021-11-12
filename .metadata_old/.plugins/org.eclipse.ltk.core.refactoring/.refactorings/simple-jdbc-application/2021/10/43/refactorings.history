@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.simplilearn.workshop.utils.mySQLDatabaseUtils&apos; to &apos;MySQLDatabaseUtils&apos;&#x0A;- Original project: &apos;simple-jdbc-application&apos;&#x0A;- Original element: &apos;com.simplilearn.workshop.utils.mySQLDatabaseUtils&apos;&#x0A;- Renamed element: &apos;com.simplilearn.workshop.utils.MySQLDatabaseUtils&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;mySQLDatabaseUtils&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.simplilearn.workshop.utils{mySQLDatabaseUtils.java[mySQLDatabaseUtils" matchStrategy="1" name="MySQLDatabaseUtils" qualified="false" references="true" similarDeclarations="false" stamp="1634484555776" textual="false" version="1.0"/>
+</session>

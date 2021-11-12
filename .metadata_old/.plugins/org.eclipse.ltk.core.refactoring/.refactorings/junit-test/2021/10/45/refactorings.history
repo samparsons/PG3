@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.simplilearn.workshop.RepeatedTest&apos; to &apos;RepeatedDemoTest&apos;&#x0A;- Original project: &apos;junit-test&apos;&#x0A;- Original element: &apos;com.simplilearn.workshop.RepeatedTest&apos;&#x0A;- Renamed element: &apos;com.simplilearn.workshop.RepeatedDemoTest&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;RepeatedTest&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src\/test\/java=/optional=/true=/=/maven.pomderived=/true=/=/test=/true=/&lt;com.simplilearn.workshop{RepeatedTest.java[RepeatedTest" matchStrategy="1" name="RepeatedDemoTest" qualified="false" references="true" similarDeclarations="false" stamp="1635697763733" textual="false" version="1.0"/>
+</session>
