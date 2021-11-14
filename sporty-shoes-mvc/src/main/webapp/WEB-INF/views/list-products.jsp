@@ -43,6 +43,7 @@
 					<th>Price</th>
 					<th>Image Path</th>
 					<th>Image</th>
+					<th>Categories</th>
 				</tr>
 				
 				<!-- loop over and print our products -->
@@ -62,9 +63,12 @@
 						<td> ${tempProduct.name} </td>
 						<td> ${tempProduct.description} </td>
 						<td> ${tempProduct.price} </td>
-						<td> ${tempProduct.imgPath} </td>
-						<td> <img src="${tempProduct.password}"> </td>
-						
+						<td> ${tempProduct.imgPathURL} </td>
+						<td> <img src="${tempProduct.imgPathURL}"> </td>
+						<td>
+						<c:forEach var="tempCategory" items="${tempProduct.categories}">
+							<span>${tempCategory.getCategory()}</span><br>
+						</c:forEach>
 						<td>
 							<!-- display the update link -->
 							<a href="${updateLink}">Update</a>

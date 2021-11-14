@@ -8,6 +8,7 @@ public interface CategoryService {
 	
 	
 	public List<Categories> getCategories();
+	public List<Categories> getCategoriesByProduct(Integer theId);
 	public Categories saveCategory(Categories theCategory);
 	public Categories getCategory(Integer theId);
 	//public List<Categories> findByCategory(String category);

@@ -40,55 +40,65 @@ public class Products {
 	@NotNull @Size(min=2,message="Path should have at least 2 characters")
 	@Column(name = "img_url")
 	private String imgPathURL;
-
-	@Column(name = "category_names")
-	@OneToMany(targetEntity=Categories.class,mappedBy="product",cascade=CascadeType.ALL)
-	private List<Categories> categoryNames; 
 	
-	@Column(name = "purchases_made")
-	@OneToMany(targetEntity=Purchases.class,mappedBy="product",cascade=CascadeType.ALL)
-	private List<Purchases> purchases; 
 	
-	public Products(@NotNull @Size(min = 2, message = "Name should have at least 2 characters") String name,
+	//private List<Categories> categoryNames;
+	 /* 
+	 * @Column(name = "purchases_made")
+	 * 
+	 * @OneToMany(targetEntity=Purchases.class,mappedBy="product",cascade=
+	 * CascadeType.ALL) private List<Purchases> purchases;
+	 */
+	
+	
+	
+	public Products(Integer productId,
+			@NotNull @Size(min = 2, message = "Name should have at least 2 characters") String name,
 			@NotNull @Size(min = 2, message = "Description should have at least 2 characters") String description,
 			@NotNull @Size(min = 2, message = "Price should have at least 2 values") String price,
 			@NotNull @Size(min = 2, message = "Path should have at least 2 characters") String imgPathURL) {
 		super();
+		this.productId = productId;
 		this.name = name;
 		this.description = description;
 		this.price = price;
 		this.imgPathURL = imgPathURL;
-		categoryNames = new ArrayList<Categories>();
-		purchases = new ArrayList<Purchases>();
+		//categoryNames = new ArrayList<Categories>();
+		//purchases = new ArrayList<Purchases>();
 	}
 	
+	
+
 	public Products() {
 		super();
 	}
-	public List<Purchases> getPurchases() {
-		return purchases;
-	}
-	public void setPurchases(Purchases purchase) {
-		purchases.add(purchase);
-	}
+	/*
+	 * public List<Purchases> getPurchases() { return purchases; } public void
+	 * setPurchases(Purchases purchase) { purchases.add(purchase); }
+	 * 
+	 public List<Categories> getCategories() { return categoryNames; } public void
+	 * setCategories(Categories category) { categoryNames.add(category); }
+	 * 
+	 * public void setAllCategories(ArrayList<Categories> categories) {
+	 * this.categoryNames = categories; }
+	 */
+	
+	
+	
 	public void setImgPathURL(String imgPathURL) {
 		this.imgPathURL = imgPathURL;
 	}
 	
+
+	public Integer getProductId() {
+		return productId;
+	}
+
 	public String getImgPathURL() {
 		return imgPathURL;
 	}
 
-	public List<Categories> getCategories() {
-		return categoryNames;
-	}
-	public void setCategories(Categories category) {
-		categoryNames.add(category);
-	}
 	
-	public void setAllCategories(ArrayList<Categories> categories) {
-		this.categoryNames = categories;
-	}
 	
 	public Integer getId() {
 		return productId;
@@ -112,9 +122,10 @@ public class Products {
 		this.price = price;
 	}
 
-	@Override
-	public String toString() {
-		return "Products [id=" + productId + ", name=" + name + ", description=" + description + ", price=" + price
-				+ ", imgPathURL=" + imgPathURL + ", categories=" + categoryNames + ", purchases=" + purchases + "]";
-	}
+	/*
+	 * @Override public String toString() { return "Products [id=" + productId +
+	 * ", name=" + name + ", description=" + description + ", price=" + price +
+	 * ", imgPathURL=" + imgPathURL + ", categories=" + categoryNames +
+	 * ", purchases=" + purchases + "]"; }
+	 */
 }

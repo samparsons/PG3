@@ -23,6 +23,7 @@ import com.simplilearn.workshop.exception.CategoryNotFoundException;
 import com.simplilearn.workshop.model.Categories;
 import com.simplilearn.workshop.model.Products;
 import com.simplilearn.workshop.services.CategoryService;
+import com.simplilearn.workshop.services.ProductService;
 
 
 @RestController
@@ -38,6 +39,12 @@ public class CategoryResource {
 	@GetMapping(path="/categories/{theId}")
 	public Categories retrieveCategory(@PathVariable Integer theId) {
 		Categories theCategory = categoryService.getCategory(theId);
+		return theCategory;
+	}
+	
+	@GetMapping(path="/categories/product/{theId}")
+	public List<Categories> retrieveCategoryByProduct(@PathVariable Integer theId) {
+		List<Categories> theCategory = categoryService.getCategoriesByProduct(theId);
 		return theCategory;
 	}
 	
@@ -76,7 +83,7 @@ public class CategoryResource {
 		@ResponseStatus(HttpStatus.NO_CONTENT)
 		public void updateCategory(@PathVariable Integer theId,@RequestBody Categories theCategory) {
 			Categories savedCategory = categoryService.getCategory(theId);
-			savedCategory.setProduct(theCategory.getProduct());
+			savedCategory.setProductId(theCategory.getProductId());
 			savedCategory.setCategory(theCategory.getCategory());
 		}
 		

@@ -8,33 +8,32 @@ public class Products {
 	private String name;
 	private String description;
 	private String price;
-	private String imgPath;
-	private List<String> categories;
-	private List<Purchases> purchases; 
+	private String imgPathURL;
+	private List<Categories> categories;
+	//private List<Purchases> purchases; 
 	
 	
 	
-	public Products(String name, String description, String price, String imgPath) {
+	public Products(Integer id,String name, String description, String price, String imgPathURL) {
 		super();
+		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.price = price;
-		this.imgPath = imgPath;
-		categories = new ArrayList<String>();
-		purchases = new ArrayList<Purchases>();
+		this.imgPathURL = imgPathURL;
+		categories = new ArrayList<Categories>();
+		//purchases = new ArrayList<Purchases>();
 	}
 
 	public Products() {
 		super();
 	}
 	
-	public List<Purchases> getPurchasees() {
-		return purchases;
-	}
-	
-	public void setPurchasees(Purchases purchase) {
-		purchases.add(purchase);
-	}
+	/*
+	 * public List<Purchases> getPurchasees() { return purchases; }
+	 * 
+	 * public void setPurchasees(Purchases purchase) { purchases.add(purchase); }
+	 */
 	
 	public Integer getId() {
 		return id;
@@ -60,24 +59,37 @@ public class Products {
 	public void setPrice(String price) {
 		this.price = price;
 	}
-	public String getImgPath() {
-		return imgPath;
+	
+	
+	
+
+	public String getImgPathURL() {
+		return imgPathURL;
 	}
-	public void setImgPath(String imgPath) {
-		this.imgPath = imgPath;
+
+	public void setImgPathURL(String imgPathURL) {
+		this.imgPathURL = imgPathURL;
 	}
-	public List<String> getCategories() {
+
+	public List<Categories> getCategories() {
 		return categories;
 	}
-	public void setCategories(String category) {
-		categories.add(category);
+
+	public void setCategories(List<Categories> cats) {
+		this.categories = cats;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Products [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price + ", imgPath="
-				+ imgPath + ", categories=" + categories + "]";
+		return "Products [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price
+				+ ", imgPathURL=" + imgPathURL + "]";
 	}
+	
+	/*
+	 * @Override public String toString() { return "Products [id=" + id + ", name="
+	 * + name + ", description=" + description + ", price=" + price + ", imgPath=" +
+	 * imgPath + ", categories=" + categories + "]"; }
+	 */
 	
 	
 	

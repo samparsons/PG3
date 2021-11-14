@@ -23,26 +23,79 @@ public class Purchases {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer purchaseId;
+	/*
+	 * @NotNull
+	 * 
+	 * @ManyToOne(fetch=FetchType.LAZY) private Customers customer;
+	 * 
+	 * @NotNull
+	 * 
+	 * @ManyToOne(fetch=FetchType.LAZY) private Products product;
+	 */
+	
 	@NotNull
-	@ManyToOne(fetch=FetchType.LAZY)
-	private Customers customer;
+	@Column(name = "product_id")
+	private Integer productId;
+	
 	@NotNull
-	@ManyToOne(fetch=FetchType.LAZY)
-	private Products product;
+	@Column(name = "customer_id")
+	private Integer customerId;
 
 	@Column(name = "purchase_date")
 	private Date purchaseDate;
-		
-	public Purchases(@NotNull Customers customer, @NotNull Products product) {
-		super();
-		this.customer = customer;
-		this.product = product;
-		this.purchaseDate = setDate();
-	}
-
+	
 	public Purchases() {
 		super();
 	}
+	
+	
+		
+	/*
+	 * public Purchases(@NotNull Customers customer, @NotNull Products product) {
+	 * super(); this.customer = customer; this.product = product; this.purchaseDate
+	 * = setDate(); }
+	 */
+
+	public Purchases(@NotNull Integer productId, @NotNull Integer customerId, Date purchaseDate) {
+		super();
+		this.productId = productId;
+		this.customerId = customerId;
+		this.purchaseDate = setDate();
+	}
+	
+	public Integer getPurchaseId() {
+		return purchaseId;
+	}
+
+	public void setPurchaseId(Integer purchaseId) {
+		this.purchaseId = purchaseId;
+	}
+
+	public Integer getProductId() {
+		return productId;
+	}
+
+	public void setProductId(Integer productId) {
+		this.productId = productId;
+	}
+
+	public Integer getCustomerId() {
+		return customerId;
+	}
+
+	public void setCustomerId(Integer customerId) {
+		this.customerId = customerId;
+	}
+
+	public Date getPurchaseDate() {
+		return purchaseDate;
+	}
+
+	public void setPurchaseDate(Date purchaseDate) {
+		this.purchaseDate = purchaseDate;
+	}
+
+	
 	
 	private Date setDate() {
 		long now = new Date().getTime();

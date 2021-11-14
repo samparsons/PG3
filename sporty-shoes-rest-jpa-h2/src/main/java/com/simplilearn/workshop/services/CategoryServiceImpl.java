@@ -19,6 +19,12 @@ public class CategoryServiceImpl implements CategoryService {
 		// TODO Auto-generated method stub
 		return categoryRepository.findAll();
 	}
+	
+	@Override
+	public List<Categories> getCategoriesByProduct(Integer theId) {
+		// TODO Auto-generated method stub
+		return categoryRepository.findAllByProduct(theId);
+	}
 
 	@Override
 	public Categories saveCategory(Categories theCategory) {

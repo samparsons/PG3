@@ -1,35 +1,9 @@
 package com.simplilearn.workshop.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-@Entity
-@Table(name="tbl_categories")
-@JsonIgnoreProperties(value={"handler","hibernateLazyInitializer","fieldHandler"})
 public class Categories {
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer categoryId;
-	/*@NotNull
-	 * @ManyToOne(fetch=FetchType.LAZY) private Products product;
-	 */
-	
-	@NotNull
-	@Column(name = "product_id")
 	private Integer productId;
-	
-	@NotNull
-	@Column(name = "category_name")
 	private String categoryName;
 	
 	public Categories() {
@@ -47,18 +21,16 @@ public class Categories {
 	 * public void setProduct(Products product) { this.product = product; }
 	 */
 
-	public Categories(@NotNull Integer productId, @NotNull String categoryName) {
+	public Categories(Integer productId, String categoryName) {
 		super();
 		this.productId = productId;
 		this.categoryName = categoryName;
 	}
 	
-	public Categories(@NotNull String categoryName) {
+	public Categories(String categoryName) {
 		super();
 		this.categoryName = categoryName;
 	}
-	
-	
 
 	public Integer getProductId() {
 		return productId;

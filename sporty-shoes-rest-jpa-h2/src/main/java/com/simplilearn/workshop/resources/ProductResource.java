@@ -78,7 +78,7 @@ public class ProductResource {
 		
 		
 		
-		@DeleteMapping(path="/Products/{theId}")
+		@DeleteMapping(path="/products/{theId}")
 		@ResponseStatus(value = HttpStatus.NO_CONTENT)
 		public void deleteProduct(@PathVariable Integer theId) {
 			Products theProduct = productService.getProduct(theId);

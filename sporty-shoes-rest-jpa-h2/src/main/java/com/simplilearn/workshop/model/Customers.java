@@ -44,8 +44,10 @@ public class Customers {
 	@Column(name = "password")
 	private String password;
 	
-	@OneToMany(mappedBy="customer",cascade=CascadeType.ALL)
-	private List<Purchases> purchases; 
+	/*
+	 * @OneToMany(mappedBy="customer",cascade=CascadeType.ALL) private
+	 * List<Purchases> purchases;
+	 */
 	
 	public Customers() {
 		super();
@@ -63,16 +65,14 @@ public class Customers {
 		this.email = email;
 		this.username = username;
 		this.password = password;
-		purchases = new ArrayList<Purchases>();
+		//purchases = new ArrayList<Purchases>();
 	}
 	
-	public List<Purchases> getPurchasees() {
-		return purchases;
-	}
-	
-	public void setPurchasees(Purchases purchase) {
-		purchases.add(purchase);
-	}
+	/*
+	 * public List<Purchases> getPurchasees() { return purchases; }
+	 * 
+	 * public void setPurchasees(Purchases purchase) { purchases.add(purchase); }
+	 */
 
 	public String getUsername() {
 		return username;

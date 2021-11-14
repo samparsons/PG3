@@ -9,7 +9,7 @@ import com.simplilearn.workshop.model.Products;
 
 public interface ProductRepository extends JpaRepository<Products, Integer>{
 	
-	@Query("SELECT new com.simplilearn.workshop.model.Products(p.name,p.description,p.price,p.imgPathURL) FROM Products p")
+	@Query("SELECT new com.simplilearn.workshop.model.Products(p.productId,p.name,p.description,p.price,p.imgPathURL) FROM Products p")
     List<Products> findAll();
 
 }

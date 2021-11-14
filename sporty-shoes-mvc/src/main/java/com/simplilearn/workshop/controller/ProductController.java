@@ -1,5 +1,6 @@
 package com.simplilearn.workshop.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.simplilearn.workshop.model.Categories;
 import com.simplilearn.workshop.model.Products;
+import com.simplilearn.workshop.proxy.CategoryServiceRestProxy;
 import com.simplilearn.workshop.proxy.ProductServiceRestProxy;
 
 @Controller
@@ -20,10 +23,18 @@ public class ProductController {
 	@Autowired
 	private ProductServiceRestProxy productServiceRestProxy;
 	
+	@Autowired
+	private CategoryServiceRestProxy categoryServiceRestProxy;
+	
 	@GetMapping(path = "/products/list")
 	public ModelAndView listOfProducts() {
-		List<Products> products = productServiceRestProxy.retrieveProducts(); // invoking another microservice - the rest service product-service-rest
-		//products.forEach(e-> System.out.println(e.getName()));
+		List<Products> products = productServiceRestProxy.retrieveProducts(); // invoking another microservice - the rest service 
+		products.forEach(e-> System.out.println(e));
+		for(Products p:products) {
+			List<Categories> cats = categoryServiceRestProxy.retrieveCategoryByProduct(p.getId());
+			p.setCategories(cats);
+		}
+		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("list-products"); // logical name
 		modelAndView.addObject("products",products);
