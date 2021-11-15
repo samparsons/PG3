@@ -28,12 +28,12 @@
 		<div id="content">
 		
 			<!-- put new button: Add Admin -->
-		
+			<a href="${pageContext.request.contextPath}/index.jsp">Back to Index</a> <br><br>
 			<input type="button" value="Add Admin"
 				   onclick="window.location.href='showFormForAdd'; return false;"
 				   class="add-button"
 			/>
-		
+			
 			<!--  add our html table here -->
 		
 			<table>

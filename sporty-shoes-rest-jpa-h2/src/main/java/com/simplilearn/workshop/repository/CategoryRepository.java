@@ -11,7 +11,7 @@ import com.simplilearn.workshop.model.Products;
 
 public interface CategoryRepository extends JpaRepository<Categories, Integer>{
 	
-	@Query("SELECT new com.simplilearn.workshop.model.Categories(c.categoryName) FROM Categories c WHERE c.productId = ?1")
+	@Query("SELECT new com.simplilearn.workshop.model.Categories(c.categoryId,c.productId,c.categoryName) FROM Categories c WHERE c.productId = ?1")
     List<Categories> findAllByProduct(Integer theId);
 	
 	

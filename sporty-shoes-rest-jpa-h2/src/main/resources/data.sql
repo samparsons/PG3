@@ -25,6 +25,7 @@ insert into  tbl_categories(product_id,category_name) values (6,'womens');
 insert into  tbl_categories(product_id,category_name) values (7,'kids');
 insert into  tbl_categories(product_id,category_name) values (8,'kids');
 insert into  tbl_categories(product_id,category_name) values (9,'kids');
+insert into  tbl_categories(product_id,category_name) values (9,'second tag');
 
 insert into  tbl_purchases(product_id,customer_id,purchase_date) values (9,1,'2020-11-11');
 insert into  tbl_purchases(product_id,customer_id,purchase_date) values (8,1,'2020-11-11');

@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.simplilearn.workshop.exception.CategoryNotFoundException;
+import com.simplilearn.workshop.exception.ProductNotFoundException;
 import com.simplilearn.workshop.model.Categories;
 import com.simplilearn.workshop.model.Products;
 import com.simplilearn.workshop.services.CategoryService;
@@ -30,6 +31,9 @@ import com.simplilearn.workshop.services.ProductService;
 public class CategoryResource {
 	@Autowired
 	private CategoryService categoryService;
+	
+	@Autowired
+	private ProductService productService;
 	
 	@GetMapping(path="/categories")
 	public List<Categories> retrieveCategories() {
@@ -45,21 +49,14 @@ public class CategoryResource {
 	@GetMapping(path="/categories/product/{theId}")
 	public List<Categories> retrieveCategoryByProduct(@PathVariable Integer theId) {
 		List<Categories> theCategory = categoryService.getCategoriesByProduct(theId);
+		System.out.println("CategoryResource//");
+		for(Categories c:theCategory) {
+			System.out.println("cid: "+c.getId()+" pid:"+c.getProductId()+" cn:"+c.getCategory());
+		}
 		return theCategory;
 	}
 	
-	@GetMapping(path="/categories/{theCategoryName}")
-	public List<Categories> findByCategory(@PathVariable String theCategoryName) {
-		List<Categories> theCategories = categoryService.getCategories();
-		List<Categories> filteredCategories = new ArrayList<Categories>();
-		for(Categories c:theCategories) {
-			if(c.getCategory().equals(theCategoryName)) {
-				filteredCategories.add(c);
-			}
-		}
-		
-		return filteredCategories;
-	}
+	
 	
 	//POST URI : localhost:8080/Categories
 		//Request Body JSON DATA {} --- > Java Object (@RequestBody) --- > binds to parameter
@@ -89,23 +86,38 @@ public class CategoryResource {
 		
 		// assignment  	: add categories
 		//response 		: 204
-		@PutMapping(path="/products/addCategory/{ProductId}/{CategoryId}")
+		@PutMapping(path="/categories/addCategory/{ProductId}/{CategoryName}")
 		@ResponseStatus(HttpStatus.NO_CONTENT)
-		public void addCategory(@PathVariable Integer ProductId, @PathVariable Integer CategoryId) {
-			Categories newCat = categoryService.getCategory(CategoryId);
-			
+		public void addCategory(@PathVariable Integer ProductId, @PathVariable String CategoryName) {
+			Categories newCat = new Categories(ProductId,CategoryName);
+			categoryService.saveCategory(newCat);
 		}
 		
-		@DeleteMapping(path="/Categories/{theId}")
+		@DeleteMapping(path="/categories/{theId}")
 		@ResponseStatus(value = HttpStatus.NO_CONTENT)
-		public void deleteCategory(@PathVariable Integer theId) {
+		public void deleteProduct(@PathVariable Integer theId) {
 			Categories theCategory = categoryService.getCategory(theId);
 			if ( theCategory == null) {
 				throw new CategoryNotFoundException("id -" +theId);
 			}
-			
 			categoryService.deleteCategory(theId);
 		}
-	
-	
+		
+		@DeleteMapping(path="/categories/{prodId}/{catName}")
+		@ResponseStatus(value = HttpStatus.NO_CONTENT)
+		public void deleteCategory(@PathVariable Integer prodId,String catName) {
+			Products theProduct = productService.getProduct(prodId);
+			List<Categories> cats = categoryService.getCategoriesByProduct(prodId);
+			
+			List<Categories> newCats = new ArrayList<Categories>();
+			if ( cats.size() == 0) {
+				throw new CategoryNotFoundException("name: " +catName);
+			} else {
+				for(Categories c : cats) {
+					if(!c.getCategory().equals(catName)) {
+						categoryService.deleteCategory(c.getId());
+					}
+				}
+			}
+		}
 }

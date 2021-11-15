@@ -20,9 +20,6 @@ public class Categories {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer categoryId;
-	/*@NotNull
-	 * @ManyToOne(fetch=FetchType.LAZY) private Products product;
-	 */
 	
 	@NotNull
 	@Column(name = "product_id")
@@ -36,29 +33,18 @@ public class Categories {
 		super();
 	}
 	
+	public Categories(Integer categoryId, @NotNull Integer productId, @NotNull String categoryName) {
+		super();
+		this.categoryId = categoryId;
+		this.productId = productId;
+		this.categoryName = categoryName;
+	}
 	
-
-	/*
-	 * public Categories(@NotNull Products product, @NotNull String categoryName) {
-	 * super(); this.product = product; this.categoryName = categoryName; }
-	 * 
-	 * public Products getProduct() { return product; }
-	 * 
-	 * public void setProduct(Products product) { this.product = product; }
-	 */
-
 	public Categories(@NotNull Integer productId, @NotNull String categoryName) {
 		super();
 		this.productId = productId;
 		this.categoryName = categoryName;
 	}
-	
-	public Categories(@NotNull String categoryName) {
-		super();
-		this.categoryName = categoryName;
-	}
-	
-	
 
 	public Integer getProductId() {
 		return productId;
@@ -67,8 +53,6 @@ public class Categories {
 	public void setProductId(Integer productId) {
 		this.productId = productId;
 	}
-
-
 
 	public String getCategory() {
 		return categoryName;
@@ -80,6 +64,10 @@ public class Categories {
 
 	public Integer getId() {
 		return categoryId;
+	}
+
+	public void setId(Integer categoryId) {
+		this.categoryId = categoryId;
 	}
 	
 	

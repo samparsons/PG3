@@ -29,11 +29,17 @@ public class ProductController {
 	@GetMapping(path = "/products/list")
 	public ModelAndView listOfProducts() {
 		List<Products> products = productServiceRestProxy.retrieveProducts(); // invoking another microservice - the rest service 
-		products.forEach(e-> System.out.println(e));
+		
 		for(Products p:products) {
 			List<Categories> cats = categoryServiceRestProxy.retrieveCategoryByProduct(p.getId());
 			p.setCategories(cats);
+			for(Categories c:cats) {
+				System.out.println("cid: "+c.getId()+" pid:"+c.getProductId()+" cn:"+c.getCategory());
+			}
 		}
+		
+		products.forEach(e-> System.out.println(e));
+		
 		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("list-products"); // logical name

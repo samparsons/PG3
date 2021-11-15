@@ -9,28 +9,14 @@ public class Categories {
 	public Categories() {
 		super();
 	}
-	
-	
 
-	/*
-	 * public Categories(@NotNull Products product, @NotNull String categoryName) {
-	 * super(); this.product = product; this.categoryName = categoryName; }
-	 * 
-	 * public Products getProduct() { return product; }
-	 * 
-	 * public void setProduct(Products product) { this.product = product; }
-	 */
-
-	public Categories(Integer productId, String categoryName) {
+	public Categories(Integer categoryId,Integer productId, String categoryName) {
 		super();
+		this.categoryId = categoryId;
 		this.productId = productId;
 		this.categoryName = categoryName;
 	}
 	
-	public Categories(String categoryName) {
-		super();
-		this.categoryName = categoryName;
-	}
 
 	public Integer getProductId() {
 		return productId;
@@ -52,6 +38,10 @@ public class Categories {
 
 	public Integer getId() {
 		return categoryId;
+	}
+	
+	public void setId(Integer categoryId) {
+		this.categoryId = categoryId;
 	}
 	
 	

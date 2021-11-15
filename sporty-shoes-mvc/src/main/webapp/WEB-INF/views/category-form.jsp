@@ -4,7 +4,7 @@
 <html>
 
 <head>
-	<title>Manage Products</title>
+	<title>Manage Categories</title>
 
 	<link type="text/css"
 		  rel="stylesheet"
@@ -19,14 +19,14 @@
 	
 	<div id="wrapper">
 		<div id="header">
-			<h2>PRM - Product Manager</h2>
+			<h2>PRM - Category Manager</h2>
 		</div>
 	</div>
 
 	<div id="container">
-		<h3>Save Product</h3>
+		<h3>Save Category</h3>
 	
-		<form:form action="saveProduct" modelAttribute="product" method="POST">
+		<form:form action="saveCategory" modelAttribute="category" method="POST">
 
 			<!-- need to associate this data with admin id -->
 			<form:hidden path="id" />
@@ -34,26 +34,12 @@
 			<table>
 				<tbody>
 					<tr>
-						<td><label>Name:</label></td>
-						<td><form:input path="name" /></td>
-					</tr>
-				
-					<tr>
-						<td><label>Description:</label></td>
-						<td><form:input path="description" /></td>
+						<td><label>Product Id:</label></td>
+						<td><form:input path="productId" /></td>
 					</tr>
 					<tr>
 						<td><label>Price:</label></td>
-						<td><form:input path="price" /></td>
-					</tr>
-					
-					<tr>
-						<td><label>Image Url:</label></td>
-						<td><form:input path="imgPathURL" /></td>
-					</tr>
-					<tr>
-						<td><label>Categories:</label></td>
-						<td>After saving this product, you may add categories from the product manager interface.</td>
+						<td><form:input path="category" /></td>
 					</tr>
 					<tr>
 						<td><label></label></td>
@@ -70,7 +56,7 @@
 		<div style="clear; both;"></div>
 		
 		<p>
-			<a href="${pageContext.request.contextPath}/admins/list">Back to List</a>
+			<a href="${pageContext.request.contextPath}/categories/list">Back to List</a>
 		</p>
 	
 	</div>

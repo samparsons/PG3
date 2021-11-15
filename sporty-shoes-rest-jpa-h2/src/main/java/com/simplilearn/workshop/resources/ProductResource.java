@@ -72,12 +72,6 @@ public class ProductResource {
 					savedProduct.setImgPathURL(theProduct.getImgPathURL());
 				}
 		
-		
-		
-		
-		
-		
-		
 		@DeleteMapping(path="/products/{theId}")
 		@ResponseStatus(value = HttpStatus.NO_CONTENT)
 		public void deleteProduct(@PathVariable Integer theId) {

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.simplilearn.workshop.model.Categories;
+import com.simplilearn.workshop.model.Products;
 
 @FeignClient(name = "sporty-shoes-rest-jpa-h2",url="localhost:8080")
 public interface CategoryServiceRestProxy {

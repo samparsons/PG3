@@ -12,7 +12,7 @@
 	<link type="text/css"
 		  rel="stylesheet"
 		  href="${pageContext.request.contextPath}/resources/css/style.css" />
-
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous">
 </head>
 
 <body>
@@ -28,11 +28,12 @@
 		<div id="content">
 		
 			<!-- put new button: Add Product -->
-		
+		   	<a href="${pageContext.request.contextPath}/index.jsp">Back to Index</a> <br><br>
 			<input type="button" value="Add Product"
 				   onclick="window.location.href='showFormForAdd'; return false;"
 				   class="add-button"
 			/>
+			
 		
 			<!--  add our html table here -->
 		
@@ -44,20 +45,23 @@
 					<th>Image Path</th>
 					<th>Image</th>
 					<th>Categories</th>
+					<th></th>
 				</tr>
 				
 				<!-- loop over and print our products -->
 				<c:forEach var="tempProduct" items="${products}">
 				
-					<!-- construct an "update" link with product id -->
+					<!-- Product: construct an "update" link with product id -->
 					<c:url var="updateLink" value="/products/showFormForUpdate">
 						<c:param name="productId" value="${tempProduct.id}" />
 					</c:url>					
 
-					<!-- construct an "delete" link with product id -->
+					<!-- Product: construct an "delete" link with product id -->
 					<c:url var="deleteLink" value="/products/delete">
 						<c:param name="productId" value="${tempProduct.id}" />
-					</c:url>					
+					</c:url>
+					
+					
 					
 					<tr>
 						<td> ${tempProduct.name} </td>
@@ -67,7 +71,15 @@
 						<td> <img src="${tempProduct.imgPathURL}"> </td>
 						<td>
 						<c:forEach var="tempCategory" items="${tempProduct.categories}">
-							<span>${tempCategory.getCategory()}</span><br>
+							<c:url var="deleteCatLink" value="/categories/delete">
+								<c:param name="categoryId" value="${tempCategory.getId()}" />
+							</c:url>
+							<c:url var="updateCatLink" value="/categories/showFormForUpdate">
+								<c:param name="categoryId" value="${tempCategory.getId()}" />
+							</c:url>
+							<div style="border-style:solid;">
+								<span>${tempCategory.getCategory()} <a href="${updateCatLink}">edit</a> | <a href="${deleteCatLink}">delete</i></a></span>
+							</div><br>
 						</c:forEach>
 						<td>
 							<!-- display the update link -->
