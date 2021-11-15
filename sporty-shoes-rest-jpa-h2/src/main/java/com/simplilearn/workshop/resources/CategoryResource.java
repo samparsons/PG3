@@ -49,10 +49,6 @@ public class CategoryResource {
 	@GetMapping(path="/categories/product/{theId}")
 	public List<Categories> retrieveCategoryByProduct(@PathVariable Integer theId) {
 		List<Categories> theCategory = categoryService.getCategoriesByProduct(theId);
-		System.out.println("CategoryResource//");
-		for(Categories c:theCategory) {
-			System.out.println("cid: "+c.getId()+" pid:"+c.getProductId()+" cn:"+c.getCategory());
-		}
 		return theCategory;
 	}
 	

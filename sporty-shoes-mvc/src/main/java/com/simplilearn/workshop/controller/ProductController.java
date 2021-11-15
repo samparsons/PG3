@@ -33,12 +33,9 @@ public class ProductController {
 		for(Products p:products) {
 			List<Categories> cats = categoryServiceRestProxy.retrieveCategoryByProduct(p.getId());
 			p.setCategories(cats);
-			for(Categories c:cats) {
-				System.out.println("cid: "+c.getId()+" pid:"+c.getProductId()+" cn:"+c.getCategory());
-			}
 		}
 		
-		products.forEach(e-> System.out.println(e));
+		//products.forEach(e-> System.out.println(e));
 		
 		
 		ModelAndView modelAndView = new ModelAndView();

@@ -23,10 +23,6 @@ public class CategoryServiceImpl implements CategoryService {
 	@Override
 	public List<Categories> getCategoriesByProduct(Integer theId) {
 		// TODO Auto-generated method stub
-		System.out.println("CategoryServiceImpl//");
-		for(Categories c:categoryRepository.findAllByProduct(theId)) {
-			System.out.println("cid: "+c.getId()+" pid:"+c.getProductId()+" cn:"+c.getCategory());
-		}
 		return categoryRepository.findAllByProduct(theId);
 	}
 

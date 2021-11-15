@@ -30,7 +30,7 @@ import com.simplilearn.workshop.services.ProductService;
 public class ProductResource {
 	@Autowired
 	private ProductService productService;
-	private CategoryService categoryService;
+	//private CategoryService categoryService;
 	
 	@GetMapping(path="/products")
 	public List<Products> retrieveProducts() {
