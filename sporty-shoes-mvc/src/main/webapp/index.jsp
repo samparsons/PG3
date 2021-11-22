@@ -9,7 +9,7 @@
   <a href="admins/list">Admin Management</a><br>
   <a href="products/list">Product Management</a><br>
   <a href="categories/list">Category Management</a><br>
-  <a href="#">Purchase Reports</a><br>
-  <a href="#">Customer Search</a><br>
+  <a href="purchases/list">Purchase Reports</a><br>
+  <a href="customers/list">Customer Search</a><br>
   </body>
 </html>

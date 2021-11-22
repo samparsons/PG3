@@ -19,6 +19,19 @@ public class CustomerServiceImpl implements CustomerService {
 		// TODO Auto-generated method stub
 		return customerRepository.findAll();
 	}
+	
+	@Override
+	public List<Customers> getByNameAsc(String name) {
+		// TODO Auto-generated method stub
+		return customerRepository.findByNameContainingIgnoreCaseOrderByNameAsc(name);
+	}
+	
+	@Override
+	public List<Customers> getByNameDesc(String name) {
+		// TODO Auto-generated method stub
+		return customerRepository.findByNameContainingIgnoreCaseOrderByNameDesc(name);
+	}
+
 
 	@Override
 	public Customers saveCustomer(Customers theCustomer) {

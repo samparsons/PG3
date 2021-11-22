@@ -1,8 +1,5 @@
 package com.simplilearn.workshop.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Customers {
 	private Integer id;
 	private String name;
@@ -11,7 +8,7 @@ public class Customers {
 	private String email;
 	private String username;
 	private String password;
-	private List<Purchases> purchases; 
+	//private List<Purchases> purchases; 
 	
 	public Customers() {
 		super();
@@ -24,16 +21,14 @@ public class Customers {
 		this.email = email;
 		this.username = username;
 		this.password = password;
-		purchases = new ArrayList<Purchases>();
+		//purchases = new ArrayList<Purchases>();
 	}
 	
-	public List<Purchases> getPurchasees() {
-		return purchases;
-	}
-	
-	public void setPurchasees(Purchases purchase) {
-		purchases.add(purchase);
-	}
+	/*
+	 * public List<Purchases> getPurchasees() { return purchases; }
+	 * 
+	 * public void setPurchasees(Purchases purchase) { purchases.add(purchase); }
+	 */
 
 	public String getUsername() {
 		return username;
@@ -79,9 +74,13 @@ public class Customers {
 
 	@Override
 	public String toString() {
-		return "Admins [id=" + id + ", name=" + name + ", phone=" + phone + ", email=" + email + ", username="
+		return "Customers [id=" + id + ", name=" + name + ", phone=" + phone + ", email=" + email + ", username="
 				+ username + ", password=" + password + "]";
 	}
+	
+	
+
+	
 	
 	
 	

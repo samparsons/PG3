@@ -118,9 +118,11 @@ public class Customers {
 
 	@Override
 	public String toString() {
-		return "Admins [id=" + id + ", name=" + name + ", phone=" + phone + ", email=" + email + ", username="
+		return "Customers [id=" + id + ", name=" + name + ", phone=" + phone + ", email=" + email + ", username="
 				+ username + ", password=" + password + "]";
 	}
+	
+	
 	
 	
 	

@@ -39,6 +39,17 @@ public class CustomerResource {
 		return theCustomer;
 	}
 	
+	@GetMapping(path="/customers/{name}/asc")
+	public List<Customers> getByNameAsc(@PathVariable String name) {
+		List<Customers> theCustomer = customerService.getByNameAsc(name);
+		return theCustomer;
+	}
+	@GetMapping(path="/customers/{name}/desc")
+	public List<Customers> getByNameDesc(@PathVariable String name) {
+		List<Customers> theCustomer = customerService.getByNameDesc(name);
+		return theCustomer;
+	}
+	
 	//POST URI : localhost:8080/Customers
 		//Request Body JSON DATA {} --- > Java Object (@RequestBody) --- > binds to parameter
 		//Response : status code : 201 , URI --- > new resource in a response header
