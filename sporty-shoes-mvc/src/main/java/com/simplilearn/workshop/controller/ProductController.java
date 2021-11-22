@@ -26,18 +26,28 @@ public class ProductController {
 	@Autowired
 	private CategoryServiceRestProxy categoryServiceRestProxy;
 	
-	@GetMapping(path = "/products/list")
-	public ModelAndView listOfProducts() {
+	@GetMapping(path = "/products/home")
+	public ModelAndView index() {
 		List<Products> products = productServiceRestProxy.retrieveProducts(); // invoking another microservice - the rest service 
-		
 		for(Products p:products) {
 			List<Categories> cats = categoryServiceRestProxy.retrieveCategoryByProduct(p.getId());
 			p.setCategories(cats);
 		}
-		
 		//products.forEach(e-> System.out.println(e));
-		
-		
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("product-home"); // logical name
+		modelAndView.addObject("products",products);
+		return modelAndView;
+	}
+	
+	@GetMapping(path = "/products/list")
+	public ModelAndView listOfProducts() {
+		List<Products> products = productServiceRestProxy.retrieveProducts(); // invoking another microservice - the rest service 
+		for(Products p:products) {
+			List<Categories> cats = categoryServiceRestProxy.retrieveCategoryByProduct(p.getId());
+			p.setCategories(cats);
+		}
+		//products.forEach(e-> System.out.println(e));
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("list-products"); // logical name
 		modelAndView.addObject("products",products);

@@ -37,3 +37,4 @@ insert into  tbl_purchases(product_id,customer_id,purchase_date) values (9,1,'20
 insert into  tbl_purchases(product_id,customer_id,purchase_date) values (8,2,'2020-01-11');
 
 
+

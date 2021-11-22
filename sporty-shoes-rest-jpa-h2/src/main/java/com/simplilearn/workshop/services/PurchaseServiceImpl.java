@@ -22,9 +22,9 @@ public class PurchaseServiceImpl implements PurchaseService {
 	}
 	
 	@Override
-	public List<Purchases> getByPurchasedDateAndProductId(Date date,Integer productId,String category) {
+	public List<Purchases> getByPurchasedDate(String date) {
 		// TODO Auto-generated method stub
-		return purchaseRepository.findByPurchaseDateAndProductIdOrCategory(date,productId,category);
+		return purchaseRepository.findByPurchaseDate(date);
 	}
 	
 

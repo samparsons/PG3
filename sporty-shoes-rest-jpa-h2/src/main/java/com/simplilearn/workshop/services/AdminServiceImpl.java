@@ -38,6 +38,12 @@ public class AdminServiceImpl implements AdminService {
 		adminRepository.deleteById(theId);
 	}
 	
+	@Override
+	public Admins login(String username,String password) {
+		// TODO Auto-generated method stub
+		return adminRepository.findFirstDistinctByUsernameAndPassword(username, password);
+	}
+	
 	
 
 }

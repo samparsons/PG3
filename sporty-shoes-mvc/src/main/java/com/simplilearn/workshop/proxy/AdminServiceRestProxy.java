@@ -19,6 +19,10 @@ public interface AdminServiceRestProxy {
 	public List<Admin> retrieveAdmins();
 	@GetMapping(path = "/admins/{theId}")
 	public Admin retrieveAdmin(@PathVariable Integer theId);
+	
+	@GetMapping(path = "/admins/login/{username}/{password}")
+	public Admin login(@PathVariable String username,@PathVariable String password);
+	
 	@PostMapping(path = "/admins")
 	public ResponseEntity<Admin> createAdmin(@RequestBody Admin theAdmin);
 	@PutMapping("/admins/{theId}")

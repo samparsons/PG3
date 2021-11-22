@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
@@ -45,9 +46,9 @@ public class Customers {
 	private String password;
 	
 	/*
-	 * @OneToMany(mappedBy="customer",cascade=CascadeType.ALL) private
-	 * List<Purchases> purchases;
+	 * @OneToMany(cascade = CascadeType.ALL) private List<Purchases> purchases;
 	 */
+	
 	
 	public Customers() {
 		super();

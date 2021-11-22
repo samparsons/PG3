@@ -1,16 +1,25 @@
 package com.simplilearn.workshop.model;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
@@ -24,26 +33,16 @@ public class Purchases {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer purchaseId;
-	/*
-	 * @NotNull
-	 * 
-	 * @ManyToOne(fetch=FetchType.LAZY) private Customers customer;
-	 * 
-	 * @NotNull
-	 * 
-	 * @ManyToOne(fetch=FetchType.LAZY) private Products product;
-	 */
 	
-	@NotNull
 	@Column(name = "product_id")
 	private Integer productId;
 	
-	@NotNull
 	@Column(name = "customer_id")
 	private Integer customerId;
-
+	
+	
 	@Column(name = "purchase_date")
-	private Date purchaseDate;
+	private String purchaseDate;
 	
 	@Transient
 	private List<Categories> categories;
@@ -51,25 +50,24 @@ public class Purchases {
 	@Transient
 	private Double price;
 	
-	private String category;
 	
 	public Purchases() {
 		super();
 	}
 	
-	/*
-	 * public Purchases(@NotNull Customers customer, @NotNull Products product) {
-	 * super(); this.customer = customer; this.product = product; this.purchaseDate
-	 * = setDate(); }
-	 */
-
-	public Purchases(@NotNull Integer productId, @NotNull Integer customerId, Date purchaseDate) {
+	public Purchases(Integer purchaseId, Integer productId, Integer customerId, String purchaseDate,
+			List<Categories> categories, Double price) {
 		super();
+		this.purchaseId = purchaseId;
 		this.productId = productId;
 		this.customerId = customerId;
-		this.purchaseDate = setDate();
+		this.purchaseDate = purchaseDate;
+		this.categories = categories;
+		this.price = price;
 	}
-	
+
+
+
 	public Integer getPurchaseId() {
 		return purchaseId;
 	}
@@ -94,11 +92,11 @@ public class Purchases {
 		this.customerId = customerId;
 	}
 
-	public Date getPurchaseDate() {
+	public String getPurchaseDate() {
 		return purchaseDate;
 	}
 
-	public void setPurchaseDate(Date purchaseDate) {
+	public void setPurchaseDate(String purchaseDate) {
 		this.purchaseDate = purchaseDate;
 	}
 	
@@ -118,10 +116,12 @@ public class Purchases {
 		this.price = price;
 	}
 
-	private Date setDate() {
+	private String setDate() {
+		DateFormat targetFormat = new SimpleDateFormat("yyyy-MM-dd");
 		long now = new Date().getTime();
-		Date today =  new Date(now);
-		return today;
+		Date date =  new Date(now);
+		String formatted = targetFormat.format(date);
+		return formatted;
 	}
 	
 	

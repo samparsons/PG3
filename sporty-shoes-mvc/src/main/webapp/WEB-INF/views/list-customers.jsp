@@ -31,15 +31,15 @@
 			<!-- put new button: Add Customer -->
 		   	<a href="${pageContext.request.contextPath}/index.jsp">Back to Index</a> <br><br>
 		   	
-		<form:form action="/customers/searchbynameasc" modelAttribute="customer" method="GET">
+	
+		<form action="/customers/searchbynameasc" method="GET">
 			<label>Name:</label>
-			<form:input path="name" />
+			<input type="text" name="name" />
 			<input type="submit" value="Search" />
-		</form:form>
-		<form:form action="/customers/list">
-			<input type="submit" value="Clear" />
-		</form:form>
-		
+		</form>
+		<br>
+		<a href="/customers/list">Clear Search</a>
+		<br><br>	
 			<!--  add our html table here -->
 		
 			<table>
@@ -68,7 +68,7 @@
 					
 					
 					<tr>
-						<td> ${tempCustomer.name} </td>
+						<td> ${tempCustomer.getName()} </td>
 						<td> ${tempCustomer.phone} </td>
 						<td> ${tempCustomer.email} </td>
 						<td> ${tempCustomer.username} </td>

@@ -9,7 +9,7 @@ public interface PurchaseService {
 	
 	
 	public List<Purchases> getPurchases();
-	List<Purchases> getByPurchasedDateAndProductId(Date date,Integer productId,String category);
+	List<Purchases> getByPurchasedDate(String date);
 	public Purchases savePurchase(Purchases thePurchase);
 	public Purchases getPurchase(Integer theId);
 	public void deletePurchase(Integer theId);

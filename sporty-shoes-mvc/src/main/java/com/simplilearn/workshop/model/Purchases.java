@@ -8,11 +8,12 @@ import java.util.List;
 public class Purchases {
 	
 	private Integer purchaseId;
+	
 	private Integer productId;
 	
 	private Integer customerId;
 
-	private Date purchaseDate;
+	private String purchaseDate;
 	
 	private Double price;
 	
@@ -33,7 +34,7 @@ public class Purchases {
 	
 
 
-	public Purchases(Integer purchaseId, Integer productId, Integer customerId, Date purchaseDate, Double price,
+	public Purchases(Integer purchaseId, Integer productId, Integer customerId, String purchaseDate, Double price,
 			List<Categories> categories, String category) {
 		super();
 		this.purchaseId = purchaseId;
@@ -42,6 +43,13 @@ public class Purchases {
 		this.purchaseDate = purchaseDate;
 		this.price = price;
 		this.categories = categories;
+		this.category = category;
+	}
+	
+	public Purchases(String purchaseDate,
+			 String category) {
+		super();
+		this.purchaseDate = purchaseDate;
 		this.category = category;
 	}
 
@@ -88,13 +96,13 @@ public class Purchases {
 
 
 
-	public Date getPurchaseDate() {
+	public String getPurchaseDate() {
 		return purchaseDate;
 	}
 
 
 
-	public void setPurchaseDate(Date purchaseDate) {
+	public void setPurchaseDate(String purchaseDate) {
 		this.purchaseDate = purchaseDate;
 	}
 

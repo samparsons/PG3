@@ -2,7 +2,6 @@ package com.simplilearn.workshop.resources;
 
 import java.net.URI;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -42,7 +41,15 @@ public class PurchaseResource {
 	
 	@GetMapping(path="/purchases")
 	public List<Purchases> retrievePurchases() {
-		return purchaseService.getPurchases();
+		List<Purchases> thePurchases = purchaseService.getPurchases();
+		for(Purchases pu:thePurchases) {
+			List<Categories> theCategories = categoryService.getCategoriesByProduct(pu.getProductId());
+			Products product = productService.getProduct(pu.getProductId());
+			pu.setCategories(theCategories);
+			Double price = Double.parseDouble(product.getPrice());
+			pu.setPrice(price);
+			}
+		return thePurchases;
 	}
 	
 	@GetMapping(path="/purchases/{theId}")
@@ -51,24 +58,29 @@ public class PurchaseResource {
 		return thePurchase;
 	}
 	
-	@GetMapping(path="/purchases/{date}/{productId}/{category}")
-	public List<Purchases> getByPurchasedDateAndProductId(@PathVariable Date date,@PathVariable Integer productId,@PathVariable String category) {
-		List<Purchases> thePurchases = purchaseService.getByPurchasedDateAndProductId(date, productId,category);
-		List<Purchases> theFilteredPurchases = new ArrayList<Purchases>();
+	@GetMapping(path="/purchases/{date}/{category}")
+	public List<Purchases> getByPurchasedDateAndCategory(@PathVariable String date,@PathVariable String category) {
+		System.out.println("Purchase Resource");
+		System.out.println(date);
+		System.out.println(category);
+		
+		List<Purchases> thePurchases = purchaseService.getByPurchasedDate(date);
+		//thePurchases.forEach(e-> System.out.println(e));
+		List<Purchases> filteredPurchases = new ArrayList<Purchases>();
 		for(Purchases pu:thePurchases) {
-			List<Categories> theCategories = categoryService.getCategoriesByProduct(productId);
-			Products product = productService.getProduct(productId);
-			for(Categories c:theCategories) {
+			List<Categories> theCategories = categoryService.getCategoriesByProduct(pu.getProductId());
+			Products product = productService.getProduct(pu.getProductId());
+			pu.setCategories(theCategories);
+			Double price = Double.parseDouble(product.getPrice());
+			pu.setPrice(price);
+			for(Categories c:pu.getCategories()) {
 				if(c.getCategory().equals(category)) {
-					pu.setCategories(theCategories);
-					Double price = Double.parseDouble(product.getPrice());
-					pu.setPrice(price);
+					filteredPurchases.add(pu);
 				}
 			}
-			theFilteredPurchases.add(pu);
 		}
 		
-		return theFilteredPurchases;
+		return filteredPurchases;
 	}
 
 	

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.simplilearn.workshop.model.Admin;
@@ -22,10 +23,25 @@ public class AdminController {
 	@GetMapping(path = "/admins/list")
 	public ModelAndView listOfAdmins() {
 		List<Admin> admins = adminServiceRestProxy.retrieveAdmins(); // invoking another microservice - the rest service admin-service-rest
-		//admins.forEach(e-> System.out.println(e.getName()));
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("list-admins"); // logical name
 		modelAndView.addObject("admins",admins);
+		return modelAndView;
+	}
+	
+	@GetMapping(path = "/admins/login")
+	public ModelAndView login(@RequestParam("username") String username,@RequestParam("password") String password ) {
+		Admin admins = adminServiceRestProxy.login(username, password); // invoking another microservice - the rest service admin-service-rest
+		ModelAndView modelAndView = new ModelAndView();
+		
+		if(admins != null) {
+			List<Admin> allAdmins = adminServiceRestProxy.retrieveAdmins(); 
+			modelAndView.setViewName("list-admins");
+			modelAndView.addObject("admins",allAdmins);
+		} else {
+			modelAndView.setViewName("redirect:/admin-login.jsp");
+		}
+		
 		return modelAndView;
 	}
 	

@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,8 +19,8 @@ import com.simplilearn.workshop.model.Purchases;
 public interface PurchaseServiceRestProxy {
 	@GetMapping(path="/purchases")
 	public List<Purchases> retrievePurchases();
-	@GetMapping(path="/purchases/{date}/{productId}/{category}")
-	public List<Purchases> getByPurchasedDateAndProductId(@PathVariable Date date,@PathVariable Integer productId,@PathVariable String category);
+	@GetMapping(path="/purchases/{date}/{category}")
+	public List<Purchases> getByPurchasedDate(@PathVariable String date,@PathVariable String category);
 	
 	@GetMapping(path = "/purchases/{theId}")
 	public Purchases retrievePurchase(@PathVariable Integer theId);
@@ -29,5 +30,5 @@ public interface PurchaseServiceRestProxy {
 	@PutMapping("/purchases/{theId}")
 	public void updatePurchase(@PathVariable Integer theId,@RequestBody Purchases thePurchases);
 	@DeleteMapping("/purchases/{theId}")
-	public void deletePurchase(@PathVariable Integer theId) ;
+	public void deletePurchase(@PathVariable Integer theId);
 }

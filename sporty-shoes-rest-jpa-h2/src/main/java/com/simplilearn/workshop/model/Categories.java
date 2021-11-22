@@ -21,6 +21,7 @@ public class Categories {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer categoryId;
 	
+	
 	@NotNull
 	@Column(name = "product_id")
 	private Integer productId;

@@ -1,6 +1,7 @@
 package com.simplilearn.workshop.resources;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -37,6 +38,18 @@ public class AdminResource {
 	public Admins retrieveAdmin(@PathVariable Integer theId) {
 		Admins theAdmin = adminService.getAdmin(theId);
 		return theAdmin;
+	}
+	
+	@GetMapping(path="/admins/login/{username}/{password}")
+	public  Admins login(@PathVariable String username,@PathVariable String password) {
+		if(username==null||password==null) {
+			throw new AdminNotFoundException("username or password was null <br>username:" +username+"<br>password: "+password);
+		}
+		Admins admins = adminService.login(username, password);
+		if (admins == null) {
+			throw new AdminNotFoundException("username -" +username);
+		}
+		return admins;
 	}
 	
 	//POST URI : localhost:8080/admins
