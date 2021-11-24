@@ -13,38 +13,51 @@
     <title>Sporty Shoes</title>
   </head>
   <body>
-    <p class="m-2"> &nbsp;</p>
-    <div class="card">
-      <div class="card-header">
-        <ul class="nav nav-tabs card-header-tabs">
-          <li class="nav-item"><a class="nav-link active" href="#">Products</a></li>
-          <li class="nav-item"><a class="nav-link" href="/admin-login.jsp">Admin Portal</a></li>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a href="#" class="navbar-brand">Sporty Shoes</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="toggle-navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse-navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a href="index.jsp" class="nav-link">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a href="/admin-login.jsp" class="nav-link">Admin Portal</a>
+          </li>
         </ul>
+
       </div>
+    </nav>
+    <div class="jumbotron">
+        <h class="display-4">Welcome to Sporty Shoes</h>
+        <p class="lead">This is a shoe company POC created by Sam Parsons for the course named "PG FSD Implement Frameworks the DevOps way"</p>
+    </div>
+    <div class="card">
+      <div class="row">
       	<c:forEach var="tempProduct" items="${products}" varStatus="itemLoop">	
-      		<c:if test="${(itemLoop.count == 1)}">
-      		<div class="row">
-      		</c:if>
-      			<div class="col-sm-4">
-				    <div class="card">
-				      <div class="card-body">
-				      	<img class="card-img-top" src="${tempProduct.imgPathURL}" alt="Card image cap">
-				        <h5 class="card-title">${tempProduct.name}</h5>
-				        <p class="card-text">${tempProduct.description} <br> 
-				        <c:forEach var="tempCategory" items="${tempProduct.categories}">
-						  <span class="badge badge-secondary">${tempCategory.getCategory()}</span>
-					    </c:forEach>
-				        </p>
-				         <a href="/index.jsp" class="btn btn-primary"
-				       		onclick="$alert("Please Select Your favorite tshirts size")">$${tempProduct.price}</a>
-				      </div>
-			    	</div>
+				<div class="col-sm-4">
+					<div class="card">
+						<div class="card-body">
+					      	<img class="card-img-top" src="${tempProduct.imgPathURL}" alt="Card image cap">
+					        <h5 class="card-title">${tempProduct.name}</h5>
+					        <p class="card-text">${tempProduct.description} <br> 
+					        <c:forEach var="tempCategory" items="${tempProduct.categories}">
+							  <span class="badge badge-secondary">${tempCategory.getCategory()}</span>
+						    </c:forEach>
+					        </p>
+					         <a href="/index.jsp" class="btn btn-primary"
+					       		onclick="$alert("Please Select Your favorite tshirts size")">$${tempProduct.price}</a>
+					    </div>
+				    </div>
 				</div> 
       		<c:if test="${(itemLoop.count % 3 == 0)}">
-      		<div/>
+      		</div>
       		<div class="row">
       		</c:if>
 		</c:forEach>
+		</div>
 	</div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
