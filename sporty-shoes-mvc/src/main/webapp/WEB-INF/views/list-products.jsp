@@ -28,7 +28,7 @@
 		<div id="content">
 		
 			<!-- put new button: Add Product -->
-		   	<a href="${pageContext.request.contextPath}/index.jsp">Back to Index</a> <br><br>
+		   	<a href="${pageContext.request.contextPath}/admin-portal.jsp">Back to Portal</a> <br><br>
 			<input type="button" value="Add Product"
 				   onclick="window.location.href='showFormForAdd'; return false;"
 				   class="add-button"
@@ -39,6 +39,7 @@
 		
 			<table>
 				<tr>
+					<th>Product Id</th>
 					<th>Name</th>
 					<th>Description</th>
 					<th>Price</th>
@@ -64,6 +65,7 @@
 					
 					
 					<tr>
+						<td> ${tempProduct.id} </td>
 						<td> ${tempProduct.name} </td>
 						<td> ${tempProduct.description} </td>
 						<td> ${tempProduct.price} </td>

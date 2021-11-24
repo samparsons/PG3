@@ -27,8 +27,8 @@
 	<div id="container">
 	
 		<div id="content">
-		
-	
+			
+			<a href="${pageContext.request.contextPath}/admin-portal.jsp">Back to Portal</a> <br><br>
 			<form action="/purchases/searchByDateAndCategory" method="GET">
 				<label >Date:</label>
 				<select name="date">
@@ -40,6 +40,9 @@
 				<input type="text" name="category" />
 				<input type="submit" value="Submit" />
 			</form>
+			<br>
+			<a href="/purchases/list">Clear Search</a>
+			<br><br>	
 		
 			<!--  add our html table here -->
 		

@@ -38,7 +38,7 @@
 						<td><form:input path="productId" /></td>
 					</tr>
 					<tr>
-						<td><label>Price:</label></td>
+						<td><label>Category Name:</label></td>
 						<td><form:input path="category" /></td>
 					</tr>
 					<tr>

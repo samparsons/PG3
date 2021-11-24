@@ -60,7 +60,7 @@ public class CategoryController {
 		return modelAndView;
 	}
 	
-	@DeleteMapping(path="/categories/delete")
+	@GetMapping(path="/categories/delete")
 	public ModelAndView deleteCategory(@ModelAttribute("categoryId") Integer theId) {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("redirect:/categories/list"); // logical name

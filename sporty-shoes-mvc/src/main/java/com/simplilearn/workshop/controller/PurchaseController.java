@@ -48,9 +48,9 @@ public class PurchaseController {
 	
 	@GetMapping(path = "/purchases/searchByDateAndCategory")
 	public ModelAndView searchByDateAndCategory(@RequestParam("date") String date,@RequestParam("category") String category ) {
-		System.out.println("Purchase Controller");
-		System.out.println(date);
-		System.out.println(category);
+		//System.out.println("Purchase Controller");
+		//System.out.println(date);
+		//System.out.println(category);
 		List<Purchases> purchases = purchaseServiceRestProxy.getByPurchasedDate(date,category);
 		//purchases.forEach(e-> System.out.println(e));
 		ModelAndView modelAndView = new ModelAndView();

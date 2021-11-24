@@ -60,9 +60,9 @@ public class PurchaseResource {
 	
 	@GetMapping(path="/purchases/{date}/{category}")
 	public List<Purchases> getByPurchasedDateAndCategory(@PathVariable String date,@PathVariable String category) {
-		System.out.println("Purchase Resource");
-		System.out.println(date);
-		System.out.println(category);
+		//System.out.println("Purchase Resource");
+		//System.out.println(date);
+		//System.out.println(category);
 		
 		List<Purchases> thePurchases = purchaseService.getByPurchasedDate(date);
 		//thePurchases.forEach(e-> System.out.println(e));

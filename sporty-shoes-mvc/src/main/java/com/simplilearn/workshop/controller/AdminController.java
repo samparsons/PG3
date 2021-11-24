@@ -35,9 +35,17 @@ public class AdminController {
 		ModelAndView modelAndView = new ModelAndView();
 		
 		if(admins != null) {
-			List<Admin> allAdmins = adminServiceRestProxy.retrieveAdmins(); 
-			modelAndView.setViewName("list-admins");
-			modelAndView.addObject("admins",allAdmins);
+			List<Admin> allAdmins = adminServiceRestProxy.retrieveAdmins();
+			int counter=0;
+			for(Admin a:allAdmins) {
+				if(a.getUsername().equals(username)&&a.getPassword().equals(password)) {
+					modelAndView.setViewName("redirect:/admin-portal.jsp");
+					counter++;
+				}
+			}
+			if(counter==0) {
+				modelAndView.setViewName("redirect:/admin-login.jsp");
+			}
 		} else {
 			modelAndView.setViewName("redirect:/admin-login.jsp");
 		}
